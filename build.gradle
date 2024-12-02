@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id "java"
 }
 
 repositories {
@@ -8,8 +8,9 @@ repositories {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:7.6.0",
-            "org.junit.jupiter:junit-jupiter-api:5.11.3",
+            "com.codeborne:selenide:7.5.1",
+            "org.junit.jupiter:junit-jupiter-api:5.11.2",
+            "org.junit.jupiter:junit-jupiter-engine:5.11.2",
             "org.slf4j:slf4j-simple:2.0.7"
     )
 }
