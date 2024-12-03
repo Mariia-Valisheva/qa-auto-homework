@@ -1,13 +1,10 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.devtools.v128.filesystem.model.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.files.DownloadActions.click;
+import static com.codeborne.selenide.Selenide.*;
 
 public class FirstTest {
 
@@ -63,6 +60,7 @@ public class FirstTest {
 
         //закрытие формы
         $("#closeLargeModal").click();
+
     }
 }
 

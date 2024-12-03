@@ -1,6 +1,5 @@
 HELP.md
 build/
-!**/src/main/**
 !**/src/test/**
 
 ### IntelliJ IDEA ###
@@ -14,3 +13,6 @@ build/
 
 ### Logs ###
 *.log
+
+### Конспекты ###
+Shpora.java
