@@ -2,7 +2,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class GitHubTest {
@@ -24,12 +23,12 @@ public class GitHubTest {
         // Перейдите в раздел Wiki проекта
         actions().moveToElement($("#wiki-tab")).click().perform();
 
-        // Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
-        actions().moveToElement($(".Box"));
+
+
 
     }
 }
 
+// Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
 
-
- //- Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
+// Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
