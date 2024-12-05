@@ -9,10 +9,9 @@ import static com.codeborne.selenide.Selenide.*;
 public class FirstTest {
 
     @BeforeAll
-    static void beforeAll() {
+    static void ConfigParams() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = false;
         Configuration.browserSize = "2560x1440";
     }
 
@@ -36,7 +35,7 @@ public class FirstTest {
         $("#subjectsInput").setValue("Ma");
         $(byText("Maths")).click();
         $("#hobbiesWrapper").$(byText("Reading")).click();
-        $("#uploadPicture").uploadFile(new java.io.File("1685578746_polinka-top-p-zhdun-foto-kartinki-prikolnie-pinterest-68.jpg"));
+        $("#uploadPicture").uploadFromClasspath("1685578746_polinka-top-p-zhdun-foto-kartinki-prikolnie-pinterest-68.jpg");
         $("#currentAddress").setValue("Мой адрес не дом и не улица");
         $("#state").click();
         $(byText("Uttar Pradesh")).click();
