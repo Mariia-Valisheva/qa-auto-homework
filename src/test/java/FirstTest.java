@@ -9,14 +9,14 @@ import static com.codeborne.selenide.Selenide.*;
 public class FirstTest {
 
     @BeforeAll
-    static void ConfigParams() {
+    static void configParams() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "2560x1440";
     }
 
     @Test
-    void StudentRegistrationFormTest() {
+    void studentRegistrationFormTest() {
 
         //заполнение формы
 

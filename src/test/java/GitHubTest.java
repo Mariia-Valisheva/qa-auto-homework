@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class GitHubTest {
 
     @BeforeAll
-    static void ConfigParams() {
+    static void configParams() {
         Configuration.baseUrl = "https://github.com";
         Configuration.holdBrowserOpen = true;
         Configuration.browserSize = "2560x1440";
@@ -15,7 +15,7 @@ public class GitHubTest {
     }
 
     @Test
-    void SelenideGitHubTest() {
+    void selenideGitHubTest() {
 
         // Откройте страницу Selenide в Github
         open("/selenide/selenide");
