@@ -18,19 +18,12 @@ public class GitHubTest {
     @Test
     void selenideGitHubTest() {
 
-        // Откройте страницу Selenide в Github
         open("/selenide/selenide");
-
-        // Перейдите в раздел Wiki проекта
         actions().moveToElement($("#wiki-tab")).click().perform();
-
-        // Убедитесь, что в списке страниц (Pages) есть страница SoftAssertions
         $("#wiki-pages-filter").setValue("SoftAssertions");
         $(".filterable-active").shouldHave(text("SoftAssertions"));
-
-        // Откройте страницу SoftAssertions, проверьте что внутри есть пример кода для JUnit5
         $(".filterable-active").$(byText("SoftAssertions")).click();
-        $(".markdown-body").shouldHave(text("Using JUnit5 extend test class"));
+        $(".markdown-body").shouldHave(text("@ExtendWith({SoftAssertsExtension.class}) class Tests { @Test void test() { Configuration.assertionMode = SOFT; open(\"page.html\"); $(\"#first\").should(visible).click(); $(\"#second\").should(visible).click(); } }"));
 
     }
 }
