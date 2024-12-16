@@ -1,6 +1,4 @@
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.DragAndDropOptions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -8,13 +6,8 @@ import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GitHubHoverTest {
+public class GitHubHoverTest extends TestBase {
 
-    @BeforeAll
-        static void configParams() {
-        Configuration.browserSize = "2560x1440";
-        Configuration.pageLoadStrategy = "eager";
-    }
     @Test
     void hoverTest() {
         open("https://github.com");

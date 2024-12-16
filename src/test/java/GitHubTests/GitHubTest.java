@@ -1,19 +1,12 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+package GitHubTests;
+
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GitHubTest {
-
-    @BeforeAll
-    static void configParams() {
-        Configuration.baseUrl = "https://github.com";
-        Configuration.browserSize = "2560x1440";
-        Configuration.pageLoadStrategy = "eager";
-    }
+public class GitHubTest extends TestBase {
 
     @Test
     void selenideGitHubTest() {

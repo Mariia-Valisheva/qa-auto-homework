@@ -1,19 +1,10 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class FirstTest {
-
-    @BeforeAll
-    static void configParams() {
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "2560x1440";
-    }
+public class FirstTest extends TestBase{
 
     @Test
     void studentRegistrationFormTest() {
