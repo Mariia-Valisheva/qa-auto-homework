@@ -1,4 +1,4 @@
-package GitHubTests;
+package tests.githubtests;
 
 import org.junit.jupiter.api.Test;
 
@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GitHubTest extends TestBase {
+public class GitHubTest extends TestBaseGit {
 
     @Test
     void selenideGitHubTest() {

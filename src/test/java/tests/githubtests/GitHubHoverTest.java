@@ -1,3 +1,5 @@
+package tests.githubtests;
+
 import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.Test;
 
@@ -6,11 +8,11 @@ import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class GitHubHoverTest extends TestBase {
+public class GitHubHoverTest extends TestBaseGit {
 
     @Test
     void hoverTest() {
-        open("https://github.com");
+        open("");
         $(".HeaderMenu-nav").$(byText("Solutions")).hover();
         $(byTagAndText("a","Enterprises")).click();
         $("#hero-section-brand-heading").shouldHave(text("The AI-powered developer platform"));
