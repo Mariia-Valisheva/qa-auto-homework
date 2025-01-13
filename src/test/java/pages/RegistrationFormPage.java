@@ -74,9 +74,8 @@ public class RegistrationFormPage {
         return this;
     }
 
-    public RegistrationFormPage addSubject(String start, String end) {
-        subjectInput.sendKeys(start);
-        $(byText(end)).click();
+    public RegistrationFormPage addSubject(String value) {
+        subjectInput.setValue(value).pressEnter();
 
         return this;
     }
