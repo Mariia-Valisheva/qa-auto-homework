@@ -1,14 +1,21 @@
 package tests.githubtests;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import testbase.TestBaseGit;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@DisplayName("Тест на поиск в гитхабе")
+@Tag("WEB")
+
 public class GitHubTest extends TestBaseGit {
 
     @Test
+    @DisplayName("Поиск информации в разделе SoftAssertions Wiki")
     void selenideGitHubTest() {
 
         open("/selenide/selenide");

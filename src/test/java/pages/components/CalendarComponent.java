@@ -8,15 +8,18 @@ import static com.codeborne.selenide.Selenide.$;
 public class CalendarComponent {
     private SelenideElement
     monthInput =  $(".react-datepicker__month-select"),
-    yearInput = $(".react-datepicker__year-select"),
-    dayInput = $(".react-datepicker__month .react-datepicker__week");
+    yearInput = $(".react-datepicker__year-select");
+
 
     public void setDate(String month, String year, String day) {
         monthInput.click();
         $(byText(month)).click();
         yearInput.click();
         $(byText(year)).click();
-        dayInput.$(byText(day)).click();
+
+        if (day.length() == 1) day = "0" + day;
+        String dayInput = ".react-datepicker__day--0" + day + ":not(.react-datepicker__day--outside-month)";
+        $(dayInput).click();
 
     }
 }

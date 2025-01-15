@@ -1,8 +1,13 @@
 package tests.demoqatests;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pages.RegistrationFormPage;
+import testbase.TestBaseDemo;
 import utils.RegistrationFormTestData;
+
+@DisplayName("Тесты на форму регистрации")
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@Tag("WEB")
 
 public class StudentRegistrationFormTest extends TestBaseDemo {
 
@@ -10,15 +15,21 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     RegistrationFormTestData registrationFormTestData = new RegistrationFormTestData();
 
     @Test
+    @DisplayName("Введение валидных данных во все инпуты на форме регистрации")
+    @Order(2)
+    @Tags({
+            @Tag("REGRESS"),
+            @Tag("POSITIVE")
+    }
+    )
     void allInputsTest() {
-        registrationFormPage.openPage()
+        registrationFormPage
                     .setFirstName(registrationFormTestData.firstName)
                     .setLastName(registrationFormTestData.lastName)
                     .setUserEmail(registrationFormTestData.userEmail)
                     .chooseGender(registrationFormTestData.gender)
                     .setUserNumber(registrationFormTestData.userNumber)
-                    .setDateOfBirth(registrationFormTestData.dateMonth, registrationFormTestData.dateYear, "1")
-                //.setDateOfBirth(registrationFormTestData.dateMonth, registrationFormTestData.dateYear, registrationFormTestData.dateDay)
+                    .setDateOfBirth(registrationFormTestData.monthOfBirth, registrationFormTestData.yearOfBirth, registrationFormTestData.dayOfBirth)
                     .addSubject(registrationFormTestData.subject)
                     .chooseHobby(registrationFormTestData.hobby)
                     .choosePicture(registrationFormTestData.picture)
@@ -42,8 +53,15 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     }
 
     @Test
+    @DisplayName("Введение валидных данных в обязательные инпуты на форме регистрации")
+    @Order(1)
+    @Tags({
+            @Tag("SMOKE"),
+            @Tag("POSITIVE")
+    }
+    )
     void minInputsTest() {
-        registrationFormPage.openPage()
+        registrationFormPage
                 .setFirstName(registrationFormTestData.firstName)
                 .setLastName(registrationFormTestData.lastName)
                 .chooseGender(registrationFormTestData.gender)
@@ -58,8 +76,12 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     }
 
     @Test
+    @DisplayName("Введение некорректного номера телефона")
+    @Order(3)
+    @Tag("NEGATIVE")
+
     void incorrectNumberTest() {
-        registrationFormPage.openPage()
+        registrationFormPage
                 .setFirstName(registrationFormTestData.firstName)
                 .setLastName(registrationFormTestData.lastName)
                 .chooseGender(registrationFormTestData.gender)

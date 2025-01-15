@@ -2,8 +2,13 @@ package utils;
 
 import com.github.javafaker.Faker;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+
 public class RegistrationFormTestData {
-    Faker faker = new Faker();
+    Faker faker = new Faker(new Locale("en"));
 
     public String
         firstName = faker.name().firstName(),
@@ -20,11 +25,26 @@ public class RegistrationFormTestData {
                 "Computer Science", "Commerce", "Accounting", "Economics", "Arts", "Social Studies", "History",
                 "Civics"),
         incorrectNumber = faker.number().digits(11),
-        dateMonth = faker.options().option("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"),
-        dateYear = String.valueOf(faker.number().numberBetween(1996, 2024)),
-        dateDay = String.valueOf(faker.number().numberBetween(1, 28));
+        yearOfBirth,
+        monthOfBirth,
+        dayOfBirth;
 
+    public void getBirthDate() {
+        Date generatedDate = faker.date().birthday(18, 50);
 
+        SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy", Locale.UK);
+        String yearOfBirth = sdfYear.format(generatedDate);
+        //System.out.println(yearOfBirth);
+
+        SimpleDateFormat sdfMon = new SimpleDateFormat("MMMM", Locale.UK);
+        String monthOfBirth = sdfMon.format(generatedDate);
+        //System.out.println(monthOfBirth);
+
+        SimpleDateFormat sdfDay = new SimpleDateFormat("d", Locale.UK);
+        String dayOfBirth = sdfDay.format(generatedDate);
+        //System.out.println(dayOfBirth);
+
+    };
 
     public String getRandomCity (String state) {
         switch(state) {
@@ -37,11 +57,11 @@ public class RegistrationFormTestData {
             case "Haryana":
                 return faker.options().option("Karnal", "Panipat");
 
-            case "Rajasthanh":
+            case "Rajasthan":
                 return faker.options().option("Jaipur", "Jaiselmer");
 
             default:
-                return null;
+                throw new IllegalArgumentException("Unknown state: " + state);
         }
     };
 
