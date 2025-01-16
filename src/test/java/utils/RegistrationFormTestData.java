@@ -29,20 +29,17 @@ public class RegistrationFormTestData {
         monthOfBirth,
         dayOfBirth;
 
-    public void getBirthDate() {
+    {
         Date generatedDate = faker.date().birthday(18, 50);
 
         SimpleDateFormat sdfYear = new SimpleDateFormat("yyyy", Locale.UK);
-        String yearOfBirth = sdfYear.format(generatedDate);
-        //System.out.println(yearOfBirth);
+        yearOfBirth = sdfYear.format(generatedDate);
 
         SimpleDateFormat sdfMon = new SimpleDateFormat("MMMM", Locale.UK);
-        String monthOfBirth = sdfMon.format(generatedDate);
-        //System.out.println(monthOfBirth);
+        monthOfBirth = sdfMon.format(generatedDate);
 
         SimpleDateFormat sdfDay = new SimpleDateFormat("d", Locale.UK);
-        String dayOfBirth = sdfDay.format(generatedDate);
-        //System.out.println(dayOfBirth);
+        dayOfBirth = sdfDay.format(generatedDate);
 
     };
 

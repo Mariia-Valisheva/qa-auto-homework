@@ -41,7 +41,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
                         .checkForm("Student Email", registrationFormTestData.userEmail)
                         .checkForm("Gender", registrationFormTestData.gender)
                         .checkForm("Mobile", registrationFormTestData.userNumber)
-                        //.checkForm("Date of Birth", "01 November,1996")
+                        .checkForm("Date of Birth", registrationFormTestData.dayOfBirth + " " + registrationFormTestData.monthOfBirth + ','+registrationFormTestData.yearOfBirth)
                         .checkForm("Subjects", registrationFormTestData.subject)
                         .checkForm("Hobbies", registrationFormTestData.hobby)
                         .checkForm("Picture", registrationFormTestData.picture)
