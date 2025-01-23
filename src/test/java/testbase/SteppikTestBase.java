@@ -2,6 +2,7 @@ package testbase;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import pages.SteppikPage;
@@ -15,7 +16,8 @@ public class SteppikTestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://stepik.org";
         Configuration.browserSize = "2560x1440";
-        Configuration.holdBrowserOpen = true;
+        //Configuration.holdBrowserOpen = true;
+        Configuration.pageLoadTimeout = 1000000;
     }
 
     @BeforeEach
@@ -23,8 +25,8 @@ public class SteppikTestBase {
         steppikPage.openPage();
     }
 
-    //@AfterEach
-    //void configParamsForEach() {
-        //Selenide.closeWebDriver();
-    //}
+    @AfterEach
+    void configParamsForEach() {
+        Selenide.closeWebDriver();
+    }
 }
