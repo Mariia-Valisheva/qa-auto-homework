@@ -4,25 +4,18 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
-import pages.SteppikPage;
-import testbase.SteppikTestBase;
+import pages.StepikPage;
 import utils.LanguagesForSteppik;
 
 import java.util.List;
 import java.util.stream.Stream;
 
-import static com.codeborne.selenide.CollectionCondition.texts;
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-
-@DisplayName("Тесты для поиска на главной страницы Steppik")
+@DisplayName("Тесты для поиска на главной страницы Stepik")
 @Tag("WEB")
 
-public class SteppikParametrizedTest extends SteppikTestBase {
+public class StepikParametrizedTest extends StepikTestBase {
 
-    SteppikPage steppikPage = new SteppikPage();
+    StepikPage stepikPage = new StepikPage();
 
    //Тест с использованием csv
     @CsvSource(value = {
@@ -32,7 +25,7 @@ public class SteppikParametrizedTest extends SteppikTestBase {
     }, delimiter = '|')
     @ParameterizedTest(name = "Тест на наличие {1} при поиске по значению {0}")
     void searchResultHasObjectTest(String searchData, String searchResult) {
-        steppikPage
+        stepikPage
                 .searchByText(searchData)
                 .assertionsOnTheMainPlace(searchResult);
     }
@@ -41,7 +34,7 @@ public class SteppikParametrizedTest extends SteppikTestBase {
     @CsvFileSource(resources = "/csv_data/dataforsearch.csv", delimiter = '|')
     @ParameterizedTest(name = "Тест на наличие {1} при поиске по значению {0}")
     void searchResultHasManyObjectTest(String searchData, String searchResult) {
-        steppikPage
+        stepikPage
                 .searchByText(searchData)
                 .assertionsOnTheMainPlace(searchResult);
     }
@@ -51,7 +44,7 @@ public class SteppikParametrizedTest extends SteppikTestBase {
     @ParameterizedTest(name = "В поисковом запросе {0} должно быть больше одной карточки")
 
     void searchResultNotEmptyTest(String searchData) {
-        steppikPage
+        stepikPage
                 .searchByText(searchData)
                 .checkCollectionSize(1);
 
@@ -61,11 +54,10 @@ public class SteppikParametrizedTest extends SteppikTestBase {
     @EnumSource(LanguagesForSteppik.class)
     @ParameterizedTest(name = "При смене языка меняется название кнопки")
     void checkButtonNameTest(LanguagesForSteppik languages) {
-        $(".language-selector").$(".navbar__down-arrow").click();
-        $(".menu_right").$$(".menu-item").find(text(languages.name())).click();
-        $(".search-form__submit").shouldHave(text(languages.description));
+       stepikPage
+               .chooseLanguage(languages.name())
+               .checkButtonText(languages.description);
     }
-
 
     //Тест с MethodSource
     static Stream<Arguments> checkNavBarTest() {
@@ -81,12 +73,10 @@ public class SteppikParametrizedTest extends SteppikTestBase {
     }
 
     @MethodSource
-    @EnumSource(LanguagesForSteppik.class)
     @ParameterizedTest(name = "При смене языка меняется название элементов в навбаре")
     void checkNavBarTest(LanguagesForSteppik languages, List<String> expectedText) {
-        $(".language-selector").$(".navbar__down-arrow").click();
-        $(".menu_right").$$(".menu-item").find(text(languages.name())).click();
-        $$(".navbar__links li").filter(visible)
-                .shouldHave(texts(expectedText));
+        stepikPage
+                .chooseLanguage(languages.name())
+                .checkNavBarButtons(expectedText);
     }
 }

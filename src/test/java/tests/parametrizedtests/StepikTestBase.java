@@ -1,15 +1,15 @@
-package testbase;
+package tests.parametrizedtests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.SteppikPage;
+import pages.StepikPage;
 
-public class SteppikTestBase {
+public class StepikTestBase {
 
-    SteppikPage steppikPage = new SteppikPage();
+    StepikPage stepikPage = new StepikPage();
 
     @BeforeAll
     static void configParams() {
@@ -17,12 +17,12 @@ public class SteppikTestBase {
         Configuration.baseUrl = "https://stepik.org";
         Configuration.browserSize = "2560x1440";
         //Configuration.holdBrowserOpen = true;
-        Configuration.pageLoadTimeout = 1000000;
+        Configuration.timeout = 12000;
     }
 
     @BeforeEach
-   void openPageBeforeEachTest() {
-        steppikPage.openPage();
+    void openPageBeforeEachTest() {
+        stepikPage.openPage();
     }
 
     @AfterEach

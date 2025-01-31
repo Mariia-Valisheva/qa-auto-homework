@@ -2,7 +2,6 @@ package tests.githubtests;
 
 import com.codeborne.selenide.DragAndDropOptions;
 import org.junit.jupiter.api.*;
-import testbase.TestBaseGit;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byTagAndText;

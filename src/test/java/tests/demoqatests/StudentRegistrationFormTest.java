@@ -2,7 +2,6 @@ package tests.demoqatests;
 
 import org.junit.jupiter.api.*;
 import pages.RegistrationFormPage;
-import testbase.TestBaseDemo;
 import utils.RegistrationFormTestData;
 
 @DisplayName("Тесты на форму регистрации")
