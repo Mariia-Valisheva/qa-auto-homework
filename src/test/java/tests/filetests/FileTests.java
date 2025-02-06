@@ -3,6 +3,8 @@ package tests.filetests;
 
 import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Assertions;
@@ -10,10 +12,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.zip.ZipEntry;
@@ -25,6 +24,29 @@ import static com.codeborne.selenide.Selenide.open;
 public class FileTests extends FileTestBase {
 
 private ClassLoader cl = FileTests.class.getClassLoader();
+
+
+    @DisplayName("Работа с json")
+    @Test
+    void jsonTest() throws Exception{
+        try(InputStream is = cl.getResourceAsStream("testjson.json")) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode actualValues = objectMapper.readValue(is, JsonNode.class);
+
+            Assertions.assertEquals("CLIENT", actualValues.get("paymentType").asText());
+            Assertions.assertEquals(5, actualValues.get("paymentPriority").asInt());
+
+            JsonNode objectValues = actualValues.withObject("clientInfo");
+            Assertions.assertEquals("Имя Фамилия", objectValues.get("clientName").asText());
+            Assertions.assertEquals("Адрес 123", objectValues.get("clientAddress").asText());
+            Assertions.assertEquals(true, objectValues.get("isResident").asBoolean());
+
+            JsonNode arrayValues = objectValues.withArray("accountTypes");
+            //String[] string = {"DEBIT", "CREDIT", "TRANSIT"};
+            //Assertions.assertArrayEquals(string, arrayValues.);
+        }
+    }
+
 
 
     @DisplayName("Работа с архивом")
