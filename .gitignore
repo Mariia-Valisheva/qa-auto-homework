@@ -1,6 +1,11 @@
 HELP.md
 build/
 !**/src/test/**
+demoqatests/
+githubtests/
+parametrizedtests/
+components/
+pages/
 
 ### IntelliJ IDEA ###
 .idea
@@ -18,6 +23,13 @@ build/
 Shpora.java
 BaseJava.java
 StudyJava.java
+LanguagesForSteppik.java
+RegistrationFormTestData.java
+img1.jpg
+img2.jpg
+img3.jpg
+StepikPage.java
+RegistrationFormPage.java
 
 
 java_pid33870.hprof
