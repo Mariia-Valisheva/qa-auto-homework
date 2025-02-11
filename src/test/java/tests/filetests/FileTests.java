@@ -41,7 +41,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
             Assertions.assertEquals("Адрес 123", objectValues.get("clientAddress").asText());
             Assertions.assertEquals(true, objectValues.get("isResident").asBoolean());
 
-            JsonNode arrayValues = objectValues.withArray("accountTypes");
+            //JsonNode arrayValues = objectValues.withArray("accountTypes");
             //String[] string = {"DEBIT", "CREDIT", "TRANSIT"};
             //Assertions.assertArrayEquals(string, arrayValues.);
         }

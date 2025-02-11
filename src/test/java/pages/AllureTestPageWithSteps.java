@@ -1,8 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -45,5 +49,10 @@ public class AllureTestPageWithSteps {
         issueTitle.shouldHave(text(issueText));
 
         return this;
+    }
+
+    @Attachment(value = "testscreen", type = "image/png", fileExtension = "png")
+    public byte[] takeScreenshotAfterTest() {
+        return ((TakesScreenshot)WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
