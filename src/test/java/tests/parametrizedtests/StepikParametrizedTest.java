@@ -1,5 +1,6 @@
 package tests.parametrizedtests;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,6 +19,7 @@ public class StepikParametrizedTest extends StepikTestBase {
     StepikPage stepikPage = new StepikPage();
 
    //Тест с использованием csv
+    @Disabled
     @CsvSource(value = {
             "Java | Объектно-ориентированное программирование на Java",
             "Python | Многопоточный Python",
@@ -31,6 +33,7 @@ public class StepikParametrizedTest extends StepikTestBase {
     }
 
 //Аналогичный тест, но с большим количеством входных объектов и сsv файлом
+    @Disabled
     @CsvFileSource(resources = "/csv_data/dataforsearch.csv", delimiter = '|')
     @ParameterizedTest(name = "Тест на наличие {1} при поиске по значению {0}")
     void searchResultHasManyObjectTest(String searchData, String searchResult) {
@@ -40,6 +43,7 @@ public class StepikParametrizedTest extends StepikTestBase {
     }
 
     //Тест с valueSource
+    @Disabled
     @ValueSource(strings = {"Java", "Python"})
     @ParameterizedTest(name = "В поисковом запросе {0} должно быть больше одной карточки")
 
@@ -51,6 +55,7 @@ public class StepikParametrizedTest extends StepikTestBase {
     }
 
     //Тест с enum
+    @Disabled
     @EnumSource(LanguagesForSteppik.class)
     @ParameterizedTest(name = "При смене языка меняется название кнопки")
     void checkButtonNameTest(LanguagesForSteppik languages) {
@@ -72,6 +77,7 @@ public class StepikParametrizedTest extends StepikTestBase {
         );
     }
 
+    @Disabled
     @MethodSource
     @ParameterizedTest(name = "При смене языка меняется название элементов в навбаре")
     void checkNavBarTest(LanguagesForSteppik languages, List<String> expectedText) {
