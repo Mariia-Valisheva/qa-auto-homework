@@ -4,6 +4,7 @@ import com.codeborne.pdftest.PDF;
 import com.codeborne.xlstest.XLS;
 import com.opencsv.CSVReader;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
@@ -24,7 +25,8 @@ public class WorkWithFilesTests {
             while ((entry = zs.getNextEntry()) != null) {
                 if (entry.getName().equals("Портфолио_ баг-репорты, тест-кейсы.pdf")) {
                     PDF pdf = new PDF(zs);
-                    Assertions.assertTrue(true, "Тест-кейсы для сайта https://rt-school.ru/");
+                    String expected = "Тест-кейсы для сайта https://rt-school.ru/";
+                    Assertions.assertTrue(pdf.text.contains(expected));
                 }
             }
         }
@@ -36,7 +38,7 @@ public class WorkWithFilesTests {
              ZipInputStream zs = new ZipInputStream(is)) {
             ZipEntry entry;
             while ((entry = zs.getNextEntry()) != null) {
-                 if (entry.getName().equals("dataforsearch.csv")) {
+                if (entry.getName().equals("dataforsearch.csv")) {
                     CSVReader csvReader = new CSVReader(new InputStreamReader(zs));
                     {
                         List<String[]> dataFromCsv = csvReader.readAll();
@@ -61,4 +63,24 @@ public class WorkWithFilesTests {
             }
         }
     }
+
+    @DisplayName("Тест на проверку пустого архива")
+    @Test
+    void unpackAndCheckEmptyZipTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("EmptyArchive.zip");
+             ZipInputStream zs = new ZipInputStream(is)) {
+            ZipEntry entry;
+            while ((entry = zs.getNextEntry()) != null) {
+                if (entry.getName().equals("home-inventory-list.xlsx")) {
+                    XLS xls = new XLS(zs);
+                    String value = xls.excel.getSheetAt(0).getRow(8).getCell(3).getStringCellValue();
+                    Assertions.assertTrue(value.contains("Purchase Information"));
+                }
+            }
+            ZipEntry checkEntry = zs.getNextEntry();
+            if (checkEntry == null) {
+                throw new RuntimeException("Архив пустой");
+        }
+    }
+}
 }

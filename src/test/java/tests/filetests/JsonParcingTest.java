@@ -13,8 +13,8 @@ public class JsonParcingTest {
 
     @DisplayName("Работа с json")
     @Test
-    void jsonParsingTest() throws Exception{
-        try(InputStream is = cl.getResourceAsStream("testjson.json")) {
+    void jsonParsingTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("testjson.json")) {
             ObjectMapper objectMapper = new ObjectMapper();
             TestJson actualValues = objectMapper.readValue(is, TestJson.class);
 

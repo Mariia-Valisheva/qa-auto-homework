@@ -23,13 +23,13 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class FileTests extends FileTestBase {
 
-private ClassLoader cl = FileTests.class.getClassLoader();
+    private ClassLoader cl = FileTests.class.getClassLoader();
 
 
     @DisplayName("Работа с json")
     @Test
-    void jsonTest() throws Exception{
-        try(InputStream is = cl.getResourceAsStream("testjson.json")) {
+    void jsonTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("testjson.json")) {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode actualValues = objectMapper.readValue(is, JsonNode.class);
 
@@ -39,7 +39,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
             JsonNode objectValues = actualValues.withObject("clientInfo");
             Assertions.assertEquals("Имя Фамилия", objectValues.get("clientName").asText());
             Assertions.assertEquals("Адрес 123", objectValues.get("clientAddress").asText());
-            Assertions.assertEquals(true, objectValues.get("isResident").asBoolean());
+            Assertions.assertTrue(objectValues.get("resident").asBoolean());
 
             //JsonNode arrayValues = objectValues.withArray("accountTypes");
             //String[] string = {"DEBIT", "CREDIT", "TRANSIT"};
@@ -48,12 +48,11 @@ private ClassLoader cl = FileTests.class.getClassLoader();
     }
 
 
-
     @DisplayName("Работа с архивом")
     @Test
-    void zipTest() throws Exception{
-        try(InputStream is = cl.getResourceAsStream("АрхивТест.zip");
-            ZipInputStream zs = new ZipInputStream(is)) {
+    void zipTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("АрхивТест.zip");
+             ZipInputStream zs = new ZipInputStream(is)) {
             ZipEntry entry;
             while ((entry = zs.getNextEntry()) != null) {
                 System.out.println(entry.getName());
@@ -63,29 +62,29 @@ private ClassLoader cl = FileTests.class.getClassLoader();
 
     @DisplayName("Работа с csv файлом")
     @Test
-    void csvTest() throws Exception{
-        try(InputStream is = cl.getResourceAsStream("csv_data/dataforsearch.csv");
-            CSVReader csvReader = new CSVReader(new InputStreamReader(is))) {
+    void csvTest() throws Exception {
+        try (InputStream is = cl.getResourceAsStream("csv_data/dataforsearch.csv");
+             CSVReader csvReader = new CSVReader(new InputStreamReader(is))) {
             List<String[]> dataFromCsv = csvReader.readAll();
             Assertions.assertEquals(5, dataFromCsv.size());
             Assertions.assertArrayEquals(
-                    new String[] {"Java", "Объектно-ориентированное программирование на Java"},
+                    new String[]{"Java", "Объектно-ориентированное программирование на Java"},
                     dataFromCsv.get(0)
             );
             Assertions.assertArrayEquals(
-                    new String[] {"Python", " Многопоточный Python"},
+                    new String[]{"Python", " Многопоточный Python"},
                     dataFromCsv.get(1)
             );
             Assertions.assertArrayEquals(
-                    new String[] {"Автотесты API", "Тестирование ПО: Автотесты для API с Java REST Assured и TestNG"},
+                    new String[]{"Автотесты API", "Тестирование ПО: Автотесты для API с Java REST Assured и TestNG"},
                     dataFromCsv.get(2)
             );
             Assertions.assertArrayEquals(
-                    new String[] {"SQL", "Основы SQL"},
+                    new String[]{"SQL", "Основы SQL"},
                     dataFromCsv.get(3)
             );
             Assertions.assertArrayEquals(
-                    new String[] {"REST", "Тестирование REST API в Postman - легкий старт в автоматизацию"},
+                    new String[]{"REST", "Тестирование REST API в Postman - легкий старт в автоматизацию"},
                     dataFromCsv.get(4)
             );
         }
@@ -93,7 +92,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
 
     @DisplayName("Работа с xls файлом")
     @Test
-    void xlsTest() throws Exception{
+    void xlsTest() throws Exception {
         open("https://www.vertex42.com/Files/download2/themed.php?file=home-inventory-list.xlsx");
         File file = $("[href='https://www.vertex42.com/Files/exclusive/home-inventory-list.xlsx']").download();
         XLS xls = new XLS(file);
@@ -103,7 +102,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
 
     @DisplayName("Работа с пдф файлом")
     @Test
-    void pdfTest() throws Exception{
+    void pdfTest() throws Exception {
         open("https://www.sberbank.ru/ru/inform");
         File file = $("[href='http://www.sberbank.ru/common/img/uploaded/files/el_docs/common/Soglashenie_ob_ispolzovanii_el_podpisi.pdf']").download();
         PDF pdf = new PDF(file);
@@ -117,7 +116,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
         open("https://mpt.tatarstan.ru/documents/reglament.htm");
         File fileTxt = $("[href='/file/mpt/File/64-ЗРТ.docx']").download();
 
-        try(InputStream inst = new FileInputStream(fileTxt)) {
+        try (InputStream inst = new FileInputStream(fileTxt)) {
             byte[] dataFromFile = inst.readAllBytes();
             String readyData = new String(dataFromFile, StandardCharsets.UTF_8);
             //Assertions.assertTrue(readyData.contains("ОБ ИСПОЛНИТЕЛЬНЫХ ОРГАНАХ ГОСУДАРСТВЕННОЙ ВЛАСТИ"));
@@ -131,7 +130,7 @@ private ClassLoader cl = FileTests.class.getClassLoader();
         open("https://github.com/selenide/selenide/blob/main/README.md");
         File fileTxt = $(".react-blob-header-edit-and-raw-actions [href*='/selenide/raw/refs/heads/main/README.md").download();
 
-        try(InputStream inst = new FileInputStream(fileTxt)) {
+        try (InputStream inst = new FileInputStream(fileTxt)) {
             byte[] dataFromFile = inst.readAllBytes();
             String readyData = new String(dataFromFile, StandardCharsets.UTF_8);
             Assertions.assertTrue(readyData.contains("What is Selenide?"));
@@ -145,5 +144,5 @@ private ClassLoader cl = FileTests.class.getClassLoader();
         File fileTxt = $(".react-blob-header-edit-and-raw-actions [href*='/selenide/raw/refs/heads/main/README.md").download();
         String readyData = FileUtils.readFileToString(fileTxt, StandardCharsets.UTF_8);
         Assertions.assertTrue(readyData.contains("What is Selenide?"));
-        }
+    }
 }
