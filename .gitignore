@@ -5,6 +5,7 @@ demoqatests/
 githubtests/
 parametrizedtests/
 components/
+alluretests/
 
 ### IntelliJ IDEA ###
 .idea
