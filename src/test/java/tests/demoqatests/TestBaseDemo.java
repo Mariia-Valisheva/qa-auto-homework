@@ -2,6 +2,9 @@ package tests.demoqatests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Step;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,13 +22,21 @@ public class TestBaseDemo {
         //Configuration.holdBrowserOpen = true;
     }
 
+    @BeforeAll
+    static void addSelenideListener() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @Step("Открываем страницу регистрации")
     @BeforeEach
     void openPageBeforeEachTest() {
         registrationFormPage.openPage();
     }
 
+
     @AfterEach
     void configParamsForEach() {
+
         Selenide.closeWebDriver();
     }
 }
