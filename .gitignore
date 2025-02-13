@@ -6,6 +6,9 @@ githubtests/
 parametrizedtests/
 components/
 alluretests/
+filetests/
+model/
+csv_data/
 
 ### IntelliJ IDEA ###
 .idea
@@ -19,7 +22,7 @@ alluretests/
 ### Logs ###
 *.log
 
-### Конспекты ###
+### Конспекты и файлы ###
 Shpora.java
 BaseJava.java
 StudyJava.java
@@ -33,5 +36,8 @@ RegistrationFormPage.java
 AllureTestPage.java
 AllureTestPageWithSteps.java
 HomeworkJava.java
+EmptyArchive.zip
+testjson.json
+АрхивТест.zip
 
 java_pid33870.hprof
