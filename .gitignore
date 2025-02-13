@@ -1,7 +1,6 @@
 HELP.md
 build/
 !**/src/test/**
-demoqatests/
 githubtests/
 parametrizedtests/
 components/
