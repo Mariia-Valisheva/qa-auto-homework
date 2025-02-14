@@ -8,7 +8,10 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationFormPage;
+
+import java.util.Map;
 
 public class TestBaseDemo {
 
@@ -20,6 +23,15 @@ public class TestBaseDemo {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "2560x1440";
         //Configuration.holdBrowserOpen = true;
+
+        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
+
     }
 
     @BeforeAll
@@ -36,7 +48,6 @@ public class TestBaseDemo {
 
     @AfterEach
     void configParamsForEach() {
-
         Selenide.closeWebDriver();
     }
 }

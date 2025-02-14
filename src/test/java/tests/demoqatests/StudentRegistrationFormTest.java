@@ -1,5 +1,6 @@
 package tests.demoqatests;
 
+import helpers.Attachments;
 import org.junit.jupiter.api.*;
 import pages.RegistrationFormPage;
 import utils.RegistrationFormTestData;
@@ -53,10 +54,16 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
                     .checkForm("State and City", registrationFormTestData.state + " " + registrationFormTestData.city);
         });
 
+        Attachments.addScreenshot("TestScreenShot");
+        Attachments.addPageSource();
 
         step("Закрываем форму", () -> {
             registrationFormPage.clickClose();
         });
+
+        Attachments.addBrowserConsoleLogs();
+        Attachments.addVideo();
+
     }
 
     @Disabled
