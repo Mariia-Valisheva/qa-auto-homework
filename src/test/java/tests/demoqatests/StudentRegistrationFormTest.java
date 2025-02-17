@@ -21,7 +21,8 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     @Order(2)
     @Tags({
             @Tag("REGRESS"),
-            @Tag("POSITIVE")
+            @Tag("POSITIVE"),
+            @Tag("SIMPLE")
     }
     )
     void allInputsTest() {
