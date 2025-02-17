@@ -22,7 +22,6 @@ csv_data/
 
 ### Конспекты и файлы ###
 Shpora.java
-BaseJava.java
 StudyJava.java
 LanguagesForSteppik.java
 StepikPage.java
@@ -32,5 +31,6 @@ HomeworkJava.java
 EmptyArchive.zip
 testjson.json
 АрхивТест.zip
+Java.txt
 
 java_pid33870.hprof
