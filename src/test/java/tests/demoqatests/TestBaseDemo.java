@@ -22,6 +22,7 @@ public class TestBaseDemo {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1440x932";
+        String browser = System.getProperty("BROWSER");
         //Configuration.holdBrowserOpen = true;
 
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
