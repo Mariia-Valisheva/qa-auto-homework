@@ -52,6 +52,7 @@ compileTestJava {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
@@ -61,8 +62,20 @@ tasks.withType(Test) {
     }
 }
 
-task demoqa_test(type: Test) {
+task demoqa_regress(type: Test) {
     useJUnitPlatform {
         includeTags("REGRESS")
+    }
+}
+
+task demoqa_negative(type: Test) {
+    useJUnitPlatform {
+        includeTags("NEGATIVE")
+    }
+}
+
+task demoqa_smoke(type: Test) {
+    useJUnitPlatform {
+        includeTags("SMOKE")
     }
 }
