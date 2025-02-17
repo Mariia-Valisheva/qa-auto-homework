@@ -3,6 +3,7 @@ package tests.demoqatests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import helpers.Attachments;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
@@ -48,7 +49,15 @@ public class TestBaseDemo {
 
 
     @AfterEach
-    void configParamsForEach() {
+        void addAttachments() {
+
+            if (!Configuration.browser.equals("firefox")) {
+                Attachments.addScreenshot("Last screenshot");
+                Attachments.addPageSource();
+                Attachments.addBrowserConsoleLogs();
+                Attachments.addVideo();
+            }
+
         Selenide.closeWebDriver();
     }
 }

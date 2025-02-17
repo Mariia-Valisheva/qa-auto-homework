@@ -54,15 +54,10 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
                     .checkForm("State and City", registrationFormTestData.state + " " + registrationFormTestData.city);
         });
 
-        Attachments.addScreenshot("TestScreenShot");
-        Attachments.addPageSource();
-
         step("Закрываем форму", () -> {
             registrationFormPage.clickClose();
         });
 
-        Attachments.addBrowserConsoleLogs();
-        Attachments.addVideo();
 
     }
 
@@ -92,16 +87,10 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
                     .checkForm("Mobile", registrationFormTestData.userNumber);
         });
 
-        Attachments.addScreenshot("TestScreenShot");
-        Attachments.addPageSource();
-
         step("Закрываем форму", () -> {
             registrationFormPage.clickClose();
         });
 
-
-        Attachments.addBrowserConsoleLogs();
-        Attachments.addVideo();
     }
 
 
@@ -125,10 +114,6 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
             registrationFormPage.mainFormCheck("Student Registration Form");
         });
 
-        Attachments.addScreenshot("TestScreenShot");
-        Attachments.addPageSource();
-        Attachments.addBrowserConsoleLogs();
-        Attachments.addVideo();
     }
 
 }
