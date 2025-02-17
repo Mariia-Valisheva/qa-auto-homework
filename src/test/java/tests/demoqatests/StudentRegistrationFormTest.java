@@ -1,6 +1,5 @@
 package tests.demoqatests;
 
-import helpers.Attachments;
 import org.junit.jupiter.api.*;
 import pages.RegistrationFormPage;
 import utils.RegistrationFormTestData;

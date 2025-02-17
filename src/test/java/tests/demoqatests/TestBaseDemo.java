@@ -25,9 +25,9 @@ public class TestBaseDemo {
         Configuration.browserSize = System.getProperty("browser_size", "1440x932");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
-        //Configuration.holdBrowserOpen = true;
 
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        String SELENOID_HOST = System.getProperty("selenoid_host");
+        Configuration.remote = "https://user1:1234@" + SELENOID_HOST + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
@@ -35,6 +35,8 @@ public class TestBaseDemo {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
+
+        //Configuration.holdBrowserOpen = true;
     }
 
     @BeforeAll
@@ -50,14 +52,14 @@ public class TestBaseDemo {
 
 
     @AfterEach
-        void addAttachments() {
+    void addAttachments() {
 
-            if (!Configuration.browser.equals("firefox")) {
-                Attachments.addScreenshot("Last screenshot");
-                Attachments.addPageSource();
-                Attachments.addBrowserConsoleLogs();
-                Attachments.addVideo();
-            }
+        if (!Configuration.browser.equals("firefox")) {
+            Attachments.addScreenshot("Last screenshot");
+            Attachments.addPageSource();
+            Attachments.addBrowserConsoleLogs();
+            Attachments.addVideo();
+        }
 
         Selenide.closeWebDriver();
     }
