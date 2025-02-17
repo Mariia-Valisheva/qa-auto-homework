@@ -22,7 +22,7 @@ public class TestBaseDemo {
     static void configParams() {
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1440x932";
+        Configuration.browserSize = System.getProperty("browser_size", "1440x932");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
         //Configuration.holdBrowserOpen = true;
