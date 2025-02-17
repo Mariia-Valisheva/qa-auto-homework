@@ -13,6 +13,7 @@ csv_data/
 *.iws
 *.iml
 *.ipr
+*.txt
 
 ### Gradle ###
 .gradle

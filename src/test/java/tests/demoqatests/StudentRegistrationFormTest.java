@@ -21,8 +21,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     @Order(2)
     @Tags({
             @Tag("REGRESS"),
-            @Tag("POSITIVE"),
-            @Tag("SIMPLE")
+            @Tag("POSITIVE")
     }
     )
     void allInputsTest() {
@@ -63,7 +62,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
         });
 
         Attachments.addBrowserConsoleLogs();
-        Attachments.addVideo();
+        //Attachments.addVideo();
 
     }
 
