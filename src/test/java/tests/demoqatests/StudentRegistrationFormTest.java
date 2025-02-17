@@ -62,7 +62,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
         });
 
         Attachments.addBrowserConsoleLogs();
-        //Attachments.addVideo();
+        Attachments.addVideo();
 
     }
 
