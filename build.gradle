@@ -3,6 +3,9 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
 repositories {
     mavenCentral()
 }

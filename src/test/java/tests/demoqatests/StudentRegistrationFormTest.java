@@ -66,7 +66,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
 
     }
 
-    @Disabled
+
     @Test
     @DisplayName("Введение валидных данных в обязательные инпуты на форме регистрации")
     @Order(1)
@@ -90,7 +90,7 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
         registrationFormPage.clickClose();
     }
 
-    @Disabled
+
     @Test
     @DisplayName("Введение некорректного номера телефона")
     @Order(3)
