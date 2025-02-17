@@ -26,7 +26,7 @@ public class TestBaseDemo {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
 
-        String SELENOID_HOST = System.getProperty("selenoid_host");
+        String SELENOID_HOST = System.getProperty("selenoid_host", "localhost");
         Configuration.remote = "https://user1:1234@" + SELENOID_HOST + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -55,7 +55,7 @@ public class TestBaseDemo {
     void addAttachments() {
 
         if (!Configuration.browser.equals("firefox")) {
-            Attachments.addScreenshot("Last screenshot");
+            Attachments.addScreenshot("Test screenshot");
             Attachments.addPageSource();
             Attachments.addBrowserConsoleLogs();
             Attachments.addVideo();

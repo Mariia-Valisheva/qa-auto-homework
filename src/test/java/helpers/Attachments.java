@@ -4,7 +4,6 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import tests.demoqatests.TestBaseDemo;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -55,6 +54,5 @@ public class Attachments {
                 + getVideoUrl()
                 + "' type='video/mp4'></video></body></html>";
     }
-
 
 }
