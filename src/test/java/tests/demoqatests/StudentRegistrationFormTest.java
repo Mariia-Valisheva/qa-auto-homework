@@ -76,18 +76,32 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     }
     )
     void minInputsTest() {
-        registrationFormPage
-                .setFirstName(registrationFormTestData.firstName)
-                .setLastName(registrationFormTestData.lastName)
-                .chooseGender(registrationFormTestData.gender)
-                .setUserNumber(registrationFormTestData.userNumber)
-                .clickSubmit();
 
-        registrationFormPage.checkForm("Student Name", registrationFormTestData.firstName + " " + registrationFormTestData.lastName)
-                .checkForm("Gender", registrationFormTestData.gender)
-                .checkForm("Mobile", registrationFormTestData.userNumber);
+        step("Заполняем форму регистрации: только минимальные значения", () -> {
+            registrationFormPage
+                    .setFirstName(registrationFormTestData.firstName)
+                    .setLastName(registrationFormTestData.lastName)
+                    .chooseGender(registrationFormTestData.gender)
+                    .setUserNumber(registrationFormTestData.userNumber)
+                    .clickSubmit();
+        });
 
-        registrationFormPage.clickClose();
+        step("Проверяем заполненные данные", () -> {
+            registrationFormPage.checkForm("Student Name", registrationFormTestData.firstName + " " + registrationFormTestData.lastName)
+                    .checkForm("Gender", registrationFormTestData.gender)
+                    .checkForm("Mobile", registrationFormTestData.userNumber);
+        });
+
+        Attachments.addScreenshot("TestScreenShot");
+        Attachments.addPageSource();
+
+        step("Закрываем форму", () -> {
+            registrationFormPage.clickClose();
+        });
+
+
+        Attachments.addBrowserConsoleLogs();
+        Attachments.addVideo();
     }
 
 
@@ -96,14 +110,25 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
     @Order(3)
     @Tag("NEGATIVE")
     void incorrectNumberTest() {
-        registrationFormPage
-                .setFirstName(registrationFormTestData.firstName)
-                .setLastName(registrationFormTestData.lastName)
-                .chooseGender(registrationFormTestData.gender)
-                .setUserNumber(registrationFormTestData.incorrectNumber)
-                .clickSubmit();
 
-        registrationFormPage.mainFormCheck("Student Registration Form");
+        step("Заполняем форму с некорректным номером телефона", () -> {
+            registrationFormPage
+                    .setFirstName(registrationFormTestData.firstName)
+                    .setLastName(registrationFormTestData.lastName)
+                    .chooseGender(registrationFormTestData.gender)
+                    .setUserNumber(registrationFormTestData.incorrectNumber)
+                    .clickSubmit();
+        });
+
+
+        step("Проверяем, что форма не отправилась", () -> {
+            registrationFormPage.mainFormCheck("Student Registration Form");
+        });
+
+        Attachments.addScreenshot("TestScreenShot");
+        Attachments.addPageSource();
+        Attachments.addBrowserConsoleLogs();
+        Attachments.addVideo();
     }
 
 }
