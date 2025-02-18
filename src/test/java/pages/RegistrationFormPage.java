@@ -99,16 +99,17 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage chooseStateAndCity(String state, String city) {
-        stateSearch.click();
+        stateSearch.scrollIntoView(true).click();
         $(byText(state)).click();
-        citySearch.click();
+        citySearch.scrollIntoView(true).click();
         $(byText(city)).click();
+
 
         return this;
     }
 
     public RegistrationFormPage clickSubmit() {
-        submitButton.click();
+        submitButton.scrollIntoView(true).click();
 
         return this;
     }
@@ -120,8 +121,7 @@ public class RegistrationFormPage {
     }
 
     public RegistrationFormPage clickClose() {
-        closeButton.click();
-
+        closeButton.scrollTo().click();
         return this;
     }
 

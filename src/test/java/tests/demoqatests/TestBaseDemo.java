@@ -26,7 +26,7 @@ public class TestBaseDemo {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
 
-        String SELENOID_HOST = System.getProperty("selenoid_host", "localhost");
+        String SELENOID_HOST = System.getProperty("selenoid_host");
         Configuration.remote = "https://user1:1234@" + SELENOID_HOST + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
