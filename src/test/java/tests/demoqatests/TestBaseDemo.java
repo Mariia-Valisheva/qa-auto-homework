@@ -39,13 +39,13 @@ public class TestBaseDemo {
         //Configuration.holdBrowserOpen = true;
     }
 
-    @BeforeAll
-    static void addSelenideListener() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-    }
 
     @Step("Открываем страницу регистрации")
     @BeforeEach
+    void addSelenideListener() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     void openPageBeforeEachTest() {
         registrationFormPage.openPage();
     }
