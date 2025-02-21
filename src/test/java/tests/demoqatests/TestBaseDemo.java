@@ -21,8 +21,7 @@ public class TestBaseDemo {
     @BeforeAll
     static void configParams() {
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.baseUrl = "https://demoqa.com";
-        Configuration.baseUrl = " https://app.qa.guru";
+        Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = System.getProperty("browser_size", "1440x932");
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browser_version");
