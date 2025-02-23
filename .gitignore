@@ -5,8 +5,12 @@ githubtests/
 parametrizedtests/
 alluretests/
 filetests/
-model/
 csv_data/
+filetestsmodel/
+components/
+pages/
+demoqatests/
+
 
 ### IntelliJ IDEA ###
 .idea
@@ -37,5 +41,15 @@ testjson.json
 АрхивТест.zip
 Java.txt
 config.json
+ClientInfoJson.java
+TestJson.java
+getusers.json
+Attachments.java
+RegistrationFormPage.java
+RegistrationFormTestData.java
+img1.jpg
+img2.png
+img3.jpg
+ApiTestsForReqres.java
 
 java_pid33870.hprof
