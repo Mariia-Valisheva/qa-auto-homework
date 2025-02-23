@@ -1,6 +1,7 @@
 package tests.api;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import utils.model.reqresmodel.createandupdateuser.CreateUpdateUserRequest;
 import utils.model.reqresmodel.createandupdateuser.CreateUserResponse;
@@ -16,6 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static io.restassured.RestAssured.given;
 import static specs.ReqresSpec.*;
 
+@Tag("API")
 @DisplayName("Тесты на создание, изменение и получение пользователя")
 public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
 
