@@ -16,14 +16,11 @@ public class ReqresSpec {
             .log().all()
             .contentType(JSON);
 
-    public static ResponseSpecification basicResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(200)
-            .build();
-
-    public static ResponseSpecification createResponseSpec = new ResponseSpecBuilder()
-            .log(ALL)
-            .expectStatusCode(201)
-            .build();
+    public ResponseSpecification getBasicResponseSpec(int expectedStatusCode) {
+        return new ResponseSpecBuilder()
+                .log(ALL)
+                .expectStatusCode(expectedStatusCode)
+                .build();
+    }
 }
 

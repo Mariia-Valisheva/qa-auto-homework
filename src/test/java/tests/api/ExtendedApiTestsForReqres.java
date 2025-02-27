@@ -1,5 +1,6 @@
 package tests.api;
 
+import io.restassured.specification.ResponseSpecification;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import models.reqresmodel.getusers.GetUsersModel;
 import models.reqresmodel.register.RegisterRequestModel;
 import models.reqresmodel.register.RegisterResponseModel;
 import models.reqresmodel.createandupdateuser.UpdateResponseModel;
+import specs.ReqresSpec;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -21,16 +23,20 @@ import static specs.ReqresSpec.*;
 @DisplayName("Тесты на создание, изменение и получение пользователя")
 public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
 
+    ReqresSpec reqresSpec = new ReqresSpec();
+
     @DisplayName("Тест на проверку списка юзеров")
     @Test
-    void listResourcesCheckResponseTest() {
+    void listResourcesCheckResponseTest()
+    {
+        ResponseSpecification responseSpecification = reqresSpec.getBasicResponseSpec(200);
 
         GetUsersModel getUsersModel = step("Получаем список юзеров", () ->
                 given(commonGetRequestSpec)
                         .queryParam("page", "2")
                         .get("/users")
                         .then()
-                        .spec(basicResponseSpec)
+                        .spec(responseSpecification)
                         .extract().as(GetUsersModel.class)
         );
 
@@ -52,6 +58,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
     @DisplayName("Тест на изменение пользователя")
     @Test
     void updateUserTest() {
+        ResponseSpecification responseSpecification = reqresSpec.getBasicResponseSpec(200);
         CreateUpdateUserRequest requestModel = new CreateUpdateUserRequest();
         requestModel.setName("Lana");
         requestModel.setJob("QA Engineer");
@@ -63,7 +70,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
                         .when()
                         .put("/users/2")
                         .then()
-                        .spec(basicResponseSpec)
+                        .spec(responseSpecification)
                         .extract().as(UpdateResponseModel.class)
         );
         step("Проверяем, что данные успешно обновлены", () -> {
@@ -76,6 +83,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
     @DisplayName("Тест на успешную регистрацию")
     @Test
     void registerSuccessfulTest() {
+        ResponseSpecification responseSpecification = reqresSpec.getBasicResponseSpec(200);
         RegisterRequestModel requestModel = new RegisterRequestModel();
         requestModel.setEmail("eve.holt@reqres.in");
         requestModel.setPassword("pistol");
@@ -87,7 +95,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
                         .when()
                         .post("/register")
                         .then()
-                        .spec(basicResponseSpec)
+                        .spec(responseSpecification)
                         .extract().as(RegisterResponseModel.class)
         );
         step("Проверяем, что регистрация прошла успешно", () -> {
@@ -100,12 +108,13 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
     @DisplayName("Тест на получение единичного значения")
     @Test
     void getSingleResourceTest() {
+        ResponseSpecification responseSpecification = reqresSpec.getBasicResponseSpec(200);
 
         GetSingleResourceModel getSingleResourceModel = step("Делаем запрос на получение значения", () ->
                 given(commonGetRequestSpec)
                         .get("/unknown/2")
                         .then()
-                        .spec(basicResponseSpec)
+                        .spec(responseSpecification)
                         .extract().as(GetSingleResourceModel.class));
 
         step("Проверяем полученное значение", () -> {
@@ -125,6 +134,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
     @DisplayName("Тест на создание нового пользователя")
     @Test
     void createUserTest() {
+        ResponseSpecification responseSpecification = reqresSpec.getBasicResponseSpec(201);
         CreateUpdateUserRequest createUserRequest = new CreateUpdateUserRequest();
         createUserRequest.setName("morpheus");
         createUserRequest.setJob("leader");
@@ -136,7 +146,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
                         .when()
                         .post("/users")
                         .then()
-                        .spec(createResponseSpec)
+                        .spec(responseSpecification)
                         .extract().as(CreateUserResponse.class));
 
         step("Проверяем созданного пользователя", () -> {
