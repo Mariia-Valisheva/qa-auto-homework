@@ -61,7 +61,7 @@ compileTestJava {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-    systemProperties(System.getProperties())
+    //systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {

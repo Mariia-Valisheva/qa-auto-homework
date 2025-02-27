@@ -3,13 +3,13 @@ package tests.api;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import utils.model.reqresmodel.createandupdateuser.CreateUpdateUserRequest;
-import utils.model.reqresmodel.createandupdateuser.CreateUserResponse;
-import utils.model.reqresmodel.getsingleresource.GetSingleResourceModel;
-import utils.model.reqresmodel.getusers.GetUsersModel;
-import utils.model.reqresmodel.register.RegisterRequestModel;
-import utils.model.reqresmodel.register.RegisterResponseModel;
-import utils.model.reqresmodel.createandupdateuser.UpdateResponseModel;
+import models.reqresmodel.createandupdateuser.CreateUpdateUserRequest;
+import models.reqresmodel.createandupdateuser.CreateUserResponse;
+import models.reqresmodel.getsingleresource.GetSingleResourceModel;
+import models.reqresmodel.getusers.GetUsersModel;
+import models.reqresmodel.register.RegisterRequestModel;
+import models.reqresmodel.register.RegisterResponseModel;
+import models.reqresmodel.createandupdateuser.UpdateResponseModel;
 
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -37,9 +37,9 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
         step("Проверяем список юзеров", () ->
         {
             assertThat(getUsersModel.getPage()).isEqualTo(2);
-            assertThat(getUsersModel.getPer_page()).isEqualTo(6);
+            assertThat(getUsersModel.getPerPage()).isEqualTo(6);
             assertThat(getUsersModel.getTotal()).isEqualTo(12);
-            assertThat(getUsersModel.getTotal_pages()).isEqualTo(2);
+            assertThat(getUsersModel.getTotalPage()).isEqualTo(2);
             assertThat(getUsersModel.getData()).hasSize(6);
 
             assertThat(getUsersModel.getSupport().getUrl())
@@ -113,7 +113,7 @@ public class ExtendedApiTestsForReqres extends TestBaseForApiTest {
                     assertThat(getSingleResourceModel.getData().getName()).isEqualTo("fuchsia rose");
                     assertThat(getSingleResourceModel.getData().getYear()).isEqualTo(2001);
                     assertThat(getSingleResourceModel.getData().getColor()).isEqualTo("#C74375");
-                    assertThat(getSingleResourceModel.getData().getPantone_value()).isEqualTo("17-2031");
+                    assertThat(getSingleResourceModel.getData().getPantoneValue()).isEqualTo("17-2031");
                     assertThat(getSingleResourceModel.getSupport().getUrl())
                             .isEqualTo("https://contentcaddy.io?utm_source=reqres&utm_medium=json&utm_campaign=referral");
                     assertThat(getSingleResourceModel.getSupport().getText())

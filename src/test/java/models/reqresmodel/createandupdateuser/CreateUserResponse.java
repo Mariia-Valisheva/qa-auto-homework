@@ -1,4 +1,4 @@
-package utils.model.reqresmodel.createandupdateuser;
+package models.reqresmodel.createandupdateuser;
 
 import lombok.Data;
 

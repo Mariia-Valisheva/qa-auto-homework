@@ -1,4 +1,4 @@
-package utils.model.reqresmodel.register;
+package models.reqresmodel.register;
 
 import lombok.Data;
 

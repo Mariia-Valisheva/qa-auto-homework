@@ -1,7 +1,7 @@
-package utils.model.reqresmodel.getsingleresource;
+package models.reqresmodel.getsingleresource;
 
 import lombok.Data;
-import utils.model.reqresmodel.GetSupportModel;
+import models.reqresmodel.GetSupportModel;
 
 @Data
 public class GetSingleResourceModel {
