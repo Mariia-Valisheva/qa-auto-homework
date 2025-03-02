@@ -7,9 +7,6 @@ alluretests/
 filetests/
 csv_data/
 filetestsmodel/
-components/
-pages/
-demoqatests/
 
 
 ### IntelliJ IDEA ###
@@ -45,11 +42,9 @@ ClientInfoJson.java
 TestJson.java
 getusers.json
 Attachments.java
-RegistrationFormPage.java
-RegistrationFormTestData.java
-img1.jpg
-img2.png
-img3.jpg
 ApiTestsForReqres.java
+AllureTestPage.java
+AllureTestPageWithSteps.java
+StepikPage.java
 
 java_pid33870.hprof
