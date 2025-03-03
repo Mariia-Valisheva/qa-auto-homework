@@ -7,7 +7,8 @@ alluretests/
 filetests/
 csv_data/
 filetestsmodel/
-
+reqresmodel/
+api/
 
 ### IntelliJ IDEA ###
 .idea
@@ -41,10 +42,10 @@ config.json
 ClientInfoJson.java
 TestJson.java
 getusers.json
-Attachments.java
 ApiTestsForReqres.java
 AllureTestPage.java
 AllureTestPageWithSteps.java
 StepikPage.java
+ReqresSpec.java
 
 java_pid33870.hprof
