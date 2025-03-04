@@ -37,7 +37,7 @@ public class Attachments {
     }
 
     public static URL getVideoUrl() {
-        String SELENOID_HOST = System.getProperty("selenoid_host");
+        String SELENOID_HOST = System.getProperty("selenoidHost");
         String videoUrl = "https://" + SELENOID_HOST + "/video/" + sessionId() + ".mp4";
 
         try {
@@ -54,5 +54,4 @@ public class Attachments {
                 + getVideoUrl()
                 + "' type='video/mp4'></video></body></html>";
     }
-
 }

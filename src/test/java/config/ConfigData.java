@@ -1,9 +1,10 @@
 package config;
 
-import com.codeborne.selenide.Browser;
 import org.aeonbits.owner.Config;
 
 import java.net.URL;
+
+import static com.codeborne.selenide.Browsers.CHROME;
 
 @Config.Sources(
         {
@@ -18,12 +19,8 @@ public interface ConfigData extends Config {
     URL baseUrl();
 
     @Key("browser")
-    @DefaultValue("CHROME")
+    @DefaultValue(CHROME)
     String browser();
-
-    @Key("remoteUrl")
-    @DefaultValue("http://localhost:4444")
-    URL remoteUrl();
 
     @Key("browserSize")
     @DefaultValue("1440x932")
@@ -34,5 +31,6 @@ public interface ConfigData extends Config {
     String browserVersion();
 
     @Key("isRemote")
+    @DefaultValue("false")
     boolean isRemote();
 }
