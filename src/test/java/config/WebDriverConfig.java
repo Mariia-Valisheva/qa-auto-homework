@@ -11,9 +11,9 @@ public class WebDriverConfig {
     private final ConfigData configData = ConfigFactory.create(ConfigData.class, System.getProperties());
 
     public void configParams() {
-        String isRemote = System.getProperty("isRemote", "false");
+        Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
         Configuration.pageLoadStrategy = "eager";
-        if (isRemote == "true") {
+        if (isRemote) {
             Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
             Configuration.browserSize = System.getProperty("browserSize", "1440x932");
             Configuration.browser = System.getProperty("browser", "chrome");
