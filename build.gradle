@@ -46,7 +46,8 @@ dependencies {
             "io.qameta.allure:allure-selenide:$allureVersion",
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "io.rest-assured:rest-assured:$restAssuredVersion",
-            "io.rest-assured:json-schema-validator:$restAssuredVersion"
+            "io.rest-assured:json-schema-validator:$restAssuredVersion",
+            "org.aeonbits.owner:owner:1.0.4"
 
     )
 }
@@ -61,7 +62,7 @@ compileTestJava {
 
 tasks.withType(Test) {
     useJUnitPlatform()
-    //systemProperties(System.getProperties())
+    systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {

@@ -111,8 +111,6 @@ public class StudentRegistrationFormTest extends TestBaseDemo {
         step("Проверяем, что форма не отправилась", () -> {
             registrationFormPage.mainFormCheck("Student Registration Form");
         });
-
     }
-
 }
 

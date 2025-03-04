@@ -18,7 +18,7 @@ public class RegistrationFormTestData {
         userNumber = faker.number().digits(10),
         gender = faker.options().option("Male", "Female", "Other"),
         hobby = faker.options().option("Reading", "Sports", "Music"),
-        picture = faker.options().option("img1.jpg", "img2.png", "img3.jpg"),
+        picture = faker.options().option("images/img1.jpg", "images/img2.png", "images/img3.jpg"),
         state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan"),
         city = getRandomCity(state),
         subject = faker.options().option("Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
