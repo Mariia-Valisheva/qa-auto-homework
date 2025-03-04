@@ -9,6 +9,7 @@ import java.util.Map;
 public class WebDriverConfig {
 
     private final ConfigData configData = ConfigFactory.create(ConfigData.class, System.getProperties());
+    private final CredentialsConfig credentialsConfig = ConfigFactory.create(CredentialsConfig.class, System.getProperties());
 
     public void configParams() {
         Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
@@ -19,8 +20,11 @@ public class WebDriverConfig {
             Configuration.browser = System.getProperty("browser", "chrome");
             Configuration.browserVersion = System.getProperty("browserVersion");
 
+
             String SELENOID_HOST = System.getProperty("selenoidHost");
-            Configuration.remote = "https://user1:1234@" + SELENOID_HOST + "/wd/hub";
+            String username = credentialsConfig.username();
+            String password = credentialsConfig.password();
+            Configuration.remote = "https://" + username + ":" + password + SELENOID_HOST + "/wd/hub";
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("selenoid:options", Map.<String, Object>of(

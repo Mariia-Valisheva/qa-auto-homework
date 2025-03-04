@@ -47,5 +47,6 @@ AllureTestPage.java
 AllureTestPageWithSteps.java
 StepikPage.java
 ReqresSpec.java
+credentials.properties
 
 java_pid33870.hprof
