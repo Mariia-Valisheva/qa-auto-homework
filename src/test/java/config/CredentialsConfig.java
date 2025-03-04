@@ -4,7 +4,7 @@ import org.aeonbits.owner.Config;
 
 @Config.Sources(
         {
-                "file:/Users/pirozhok/IdeaProjects/homework1/src/test/resources/local.properties"
+                "file:/Users/pirozhok/IdeaProjects/homework1/src/test/resources/credentials.properties"
         }
 )
 
