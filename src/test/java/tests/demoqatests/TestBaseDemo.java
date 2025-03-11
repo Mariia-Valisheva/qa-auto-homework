@@ -15,7 +15,7 @@ import pages.RegistrationFormPage;
 public class TestBaseDemo {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-    Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
+    boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote", "false"));
     String environment = System.getProperty("env");
 
     @BeforeAll

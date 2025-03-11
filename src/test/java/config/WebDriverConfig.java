@@ -12,7 +12,7 @@ public class WebDriverConfig {
     private final SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class, System.getProperties());
 
     public void configParams() {
-        Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
+        boolean isRemote = Boolean.parseBoolean(System.getProperty("isRemote", "false"));
         String environment = System.getProperty("env");
 
         Configuration.pageLoadStrategy = "eager";
