@@ -35,13 +35,13 @@ public class WebDriverConfig {
             Configuration.browserCapabilities = capabilities;
 
         } else {
-            if(environment == "remote") {
+            if(environment.equals("remote")) {
                 Configuration.baseUrl = configData.baseUrl().toString();
                 Configuration.browser = configData.browser();
                 Configuration.browserSize = configData.browserSize();
                 Configuration.browserVersion = configData.browserVersion();
 
-                String SELENOID_HOST = configData.remoteUrl().toString();
+                String SELENOID_HOST = configData.remoteUrl();
                 String username = selenoidConfig.username();
                 String password = selenoidConfig.password();
                 Configuration.remote = "https://" + username + ":" + password + SELENOID_HOST + "/wd/hub";

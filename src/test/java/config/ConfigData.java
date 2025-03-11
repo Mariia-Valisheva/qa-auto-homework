@@ -30,10 +30,6 @@ public interface ConfigData extends Config {
     @DefaultValue("125")
     String browserVersion();
 
-    @Key("isRemote")
-    @DefaultValue("false")
-    boolean isRemote();
-
     @Key("remoteUrl")
-    URL remoteUrl();
+    String remoteUrl();
 }
