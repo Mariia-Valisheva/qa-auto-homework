@@ -9,7 +9,7 @@ import java.util.Map;
 public class WebDriverConfig {
 
     private final ConfigData configData = ConfigFactory.create(ConfigData.class, System.getProperties());
-    private final SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class, System.getProperties());
+    private final SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class);
 
     public void configParams() {
         Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
