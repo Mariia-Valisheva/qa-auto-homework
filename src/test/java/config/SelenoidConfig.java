@@ -10,9 +10,9 @@ import org.aeonbits.owner.Config;
 
 public interface SelenoidConfig extends Config {
 
-    @Key("SELENOID_LOGIN")
+    @Key("selenoidLogin")
     String username();
 
-    @Key("SELENOID_PASS")
+    @Key("selenoidPass")
     String password();
 }
