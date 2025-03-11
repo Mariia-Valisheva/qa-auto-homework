@@ -8,7 +8,6 @@ import config.WebDriverConfig;
 import helpers.Attachments;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +16,7 @@ import pages.RegistrationFormPage;
 public class TestBaseDemo {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
-    private final ConfigData configData = ConfigFactory.create(ConfigData.class, System.getProperties());
+    Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
 
     @BeforeAll
     static void configParams() {
@@ -40,7 +39,7 @@ public class TestBaseDemo {
 
     @AfterEach
     void addAttachments() {
-        if (configData.isRemote()) {
+        if (isRemote) {
             if (!Configuration.browser.equals("firefox")) {
                 Attachments.addScreenshot("Test screenshot");
                 Attachments.addPageSource();
