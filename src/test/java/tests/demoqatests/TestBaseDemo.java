@@ -16,6 +16,7 @@ public class TestBaseDemo {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
     Boolean isRemote = Boolean.valueOf(System.getProperty("isRemote", "false"));
+    String environment = System.getProperty("env");
 
     @BeforeAll
     static void configParams() {
@@ -38,7 +39,7 @@ public class TestBaseDemo {
 
     @AfterEach
     void addAttachments() {
-        if (isRemote) {
+        if (isRemote || environment.equals("remote")) {
             if (!Configuration.browser.equals("firefox")) {
                 Attachments.addScreenshot("Test screenshot");
                 Attachments.addPageSource();
