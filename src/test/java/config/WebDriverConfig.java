@@ -17,25 +17,6 @@ public class WebDriverConfig {
 
         Configuration.pageLoadStrategy = "eager";
         if (isRemote) {
-            if (environment == "remote") {
-                Configuration.baseUrl = configData.baseUrl().toString();
-                Configuration.browser = configData.browser();
-                Configuration.browserSize = configData.browserSize();
-                Configuration.browserVersion = configData.browserVersion();
-
-                String SELENOID_HOST = configData.remoteUrl().toString();
-                String username = selenoidConfig.username();
-                String password = selenoidConfig.password();
-                Configuration.remote = "https://" + username + ":" + password + SELENOID_HOST + "/wd/hub";
-
-                DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                        "enableVNC", true,
-                        "enableVideo", true
-                ));
-                Configuration.browserCapabilities = capabilities;
-            }
-
             Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
             Configuration.browserSize = System.getProperty("browserSize", "1440x932");
             Configuration.browser = System.getProperty("browser", "chrome");
@@ -54,6 +35,24 @@ public class WebDriverConfig {
             Configuration.browserCapabilities = capabilities;
 
         } else {
+            if(environment == "remote") {
+                Configuration.baseUrl = configData.baseUrl().toString();
+                Configuration.browser = configData.browser();
+                Configuration.browserSize = configData.browserSize();
+                Configuration.browserVersion = configData.browserVersion();
+
+                String SELENOID_HOST = configData.remoteUrl().toString();
+                String username = selenoidConfig.username();
+                String password = selenoidConfig.password();
+                Configuration.remote = "https://" + username + ":" + password + SELENOID_HOST + "/wd/hub";
+
+                DesiredCapabilities capabilities = new DesiredCapabilities();
+                capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                        "enableVNC", true,
+                        "enableVideo", true
+                ));
+                Configuration.browserCapabilities = capabilities;
+            }
             Configuration.baseUrl = configData.baseUrl().toString();
             Configuration.browser = configData.browser();
             Configuration.browserSize = configData.browserSize();
