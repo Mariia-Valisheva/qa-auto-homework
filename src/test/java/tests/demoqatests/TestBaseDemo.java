@@ -3,7 +3,6 @@ package tests.demoqatests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.ConfigData;
 import config.WebDriverConfig;
 import helpers.Attachments;
 import io.qameta.allure.Step;
