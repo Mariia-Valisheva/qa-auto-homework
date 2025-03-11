@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Browsers.CHROME;
 
 @Config.Sources(
         {
-                "classpath:local.properties"
+                "classpath:${env}.properties",
         }
 )
 
@@ -33,4 +33,7 @@ public interface ConfigData extends Config {
     @Key("isRemote")
     @DefaultValue("false")
     boolean isRemote();
+
+    @Key("remoteUrl")
+    URL remoteUrl();
 }
