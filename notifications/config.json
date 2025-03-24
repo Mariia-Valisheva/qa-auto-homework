@@ -1,0 +1,18 @@
+{
+  "base": {
+    "project": "Test",
+    "environment": "ift",
+    "comment": "test comment",
+    "reportLink": "https://jenkins.autotests.cloud/job/demoqa_homework_test/23/",
+    "language": "ru",
+    "allureFolder": "/var/folders/96/c551sww56g11mtp0rkf77fxh0000gn/T/15292022040129146985/allure-report",
+    "enableChart": true,
+    "enableSuitesPublishing": true
+  },
+  "telegram": {
+    "token": "7717880702:AAGzpufY7ONf6SMXToIw2hq34c6teSLEeG8",
+    "chat": "-1002294169638",
+    "replyTo": "",
+    "templatePath": "/templates/telegram.ftl"
+  }
+}

@@ -1,14 +1,6 @@
 HELP.md
 build/
 !**/src/test/**
-githubtests/
-parametrizedtests/
-alluretests/
-filetests/
-csv_data/
-filetestsmodel/
-reqresmodel/
-api/
 
 ### IntelliJ IDEA ###
 .idea
@@ -29,24 +21,6 @@ api/
 ### Конспекты и файлы ###
 Shpora.java
 StudyJava.java
-LanguagesForSteppik.java
-StepikPage.java
-AllureTestPage.java
-AllureTestPageWithSteps.java
-HomeworkJava.java
-EmptyArchive.zip
-testjson.json
-АрхивТест.zip
-Java.txt
-config.json
-ClientInfoJson.java
-TestJson.java
-getusers.json
-ApiTestsForReqres.java
-AllureTestPage.java
-AllureTestPageWithSteps.java
-StepikPage.java
-ReqresSpec.java
 credentials.properties
 
 java_pid33870.hprof

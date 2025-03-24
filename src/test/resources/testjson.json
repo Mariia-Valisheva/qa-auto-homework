@@ -1,0 +1,10 @@
+{
+  "paymentType": "CLIENT",
+  "paymentPriority": 5,
+  "clientInfo": {
+    "clientName": "Имя Фамилия",
+    "clientAddress": "Адрес 123",
+    "resident": true,
+    "accountTypes": ["DEBIT", "CREDIT", "TRANSIT"]
+  }
+}
