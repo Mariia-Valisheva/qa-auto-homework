@@ -22,5 +22,6 @@ build/
 Shpora.java
 StudyJava.java
 credentials.properties
+config.json
 
 java_pid33870.hprof
